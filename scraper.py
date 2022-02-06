@@ -22,31 +22,33 @@ ul = WebDriverWait(driver, 10).until(
 
 lis = ul.find_elements(By.TAG_NAME, "li")
 
-for i in range(len(lis)):
+try:
+    for i in range(len(lis)):
 
 
-    ul_el = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.CLASS_NAME, "search"))
-    )
+        ul_el = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "search"))
+        )
 
-    lis = ul_el.find_elements(By.TAG_NAME, "li")
+        lis = ul_el.find_elements(By.TAG_NAME, "li")
     
-    a = lis[i].find_element(By.TAG_NAME, "a")
-    a.click()
+        a = lis[i].find_element(By.TAG_NAME, "a")
+        a.click()
     
 
-    section = WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located((By.CLASS_NAME, "section"))
-    )
-    ps = section.find_elements(By.TAG_NAME, "p")
+        section = WebDriverWait(driver, 5).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "section"))
+        )
+        ps = section.find_elements(By.TAG_NAME, "p")
 
-    for p in ps:
-        print(p.text)
+        for p in ps:
+            print(p.text)
 
     
-    driver.back()
+        driver.back()
 
-
+finally:
+    driver.close()
 
 
 
