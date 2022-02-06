@@ -15,23 +15,39 @@ search = driver.find_element(By.XPATH, "//*[@id='searchbox']/div/form/input[1]")
 search.send_keys("click")
 search.send_keys(Keys.RETURN)
 
-try:
-    ul = WebDriverWait(driver, 10).until(
+
+ul = WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.CLASS_NAME, "search"))
+)
+
+lis = ul.find_elements(By.TAG_NAME, "li")
+
+for i in range(len(lis)):
+
+
+    ul_el = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.CLASS_NAME, "search"))
     )
-    a = ul.find_element(By.TAG_NAME, "a")
+
+    lis = ul_el.find_elements(By.TAG_NAME, "li")
+    
+    a = lis[i].find_element(By.TAG_NAME, "a")
     a.click()
+    
 
     section = WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located((By.ID, "webdriver-api"))
+        EC.presence_of_element_located((By.CLASS_NAME, "section"))
     )
     ps = section.find_elements(By.TAG_NAME, "p")
 
     for p in ps:
         print(p.text)
 
-except Exception:
-    driver.close()
+    
+    driver.back()
+
+
+
 
 
 
