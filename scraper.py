@@ -5,10 +5,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
+
+all_text = ""
 PATH = "C:\Program Files (x86)\chromedriver.exe"
 driver = webdriver.Chrome(PATH)
 
-driver.get("https://selenium-python.readthedocs.io/api.html")
+driver.get("https://selenium-python.readthedocs.io/")
 print(driver.title)
 
 search = driver.find_element(By.XPATH, "//*[@id='searchbox']/div/form/input[1]")
@@ -42,12 +44,16 @@ try:
         ps = section.find_elements(By.TAG_NAME, "p")
 
         for p in ps:
-            print(p.text)
+            all_text += "".join(p.text)
 
     
         driver.back()
 
 finally:
+    open('info.txt', 'w').close()
+    file = open("info.txt", "a") #opens a file in the same folder with python script
+    file.write(all_text) #writes all text to a file in the same folder with python script
+    print(all_text)
     driver.close()
 
 
