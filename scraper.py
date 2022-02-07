@@ -40,10 +40,14 @@ try:
         section = WebDriverWait(driver, 5).until(
             EC.presence_of_element_located((By.CLASS_NAME, "inner-content-article"))
         )
-        print(section.text)
+        all_text += section.text
 
         driver.back()
         driver.refresh()
 
 finally:
+    open('info.txt', 'w').close()
+    file = open("info.txt", "a") #opens a file in the same folder with python script
+    file.write(all_text) #writes all text to a file in the same folder with python script
+    print(all_text)
     driver.close()
