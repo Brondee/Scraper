@@ -55,11 +55,3 @@ finally:
     file.write(all_text) #writes all text to a file in the same folder with python script
     print(all_text)
     driver.close()
-
-
-
-
-
-
-
-
