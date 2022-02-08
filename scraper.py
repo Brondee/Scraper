@@ -32,11 +32,14 @@ try:
         )
 
         results_el = container_el.find_elements(By.CLASS_NAME, "global-search__item")
-    
+
+        img = results_el[i].find_element(By.TAG_NAME, "img")
+        src = img.get_attribute("src")
+
         a = results_el[i].find_element(By.TAG_NAME, "a")
         a.click()
     
-
+        
         section = WebDriverWait(driver, 5).until(
             EC.presence_of_element_located((By.CLASS_NAME, "inner-content-article"))
         )
@@ -50,4 +53,5 @@ finally:
     file = open("info.txt", "a") #opens a file in the same folder with python script
     file.write(all_text) #writes all text to a file in the same folder with python script
     print(all_text)
+    print(src)
     driver.close()
