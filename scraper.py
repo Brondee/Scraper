@@ -53,7 +53,7 @@ def scraper(query):
             driver.back()
             driver.refresh()
 
-            return all_text, title
+            return all_text, title, src
 
     finally:
         open('info.txt', 'w').close()
