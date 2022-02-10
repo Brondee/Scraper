@@ -18,6 +18,9 @@ async function get_text(){
         let div_wrap =  document.createElement('div');
         div_wrap.className = "result_wrap";
 
+        let div_title_img = document.createElement('div');
+        div_title_img.className = "title_img_block";
+
         let res_title = document.createElement('h3');
         res_title.className = 'result_title';
 
@@ -31,8 +34,9 @@ async function get_text(){
         main_div.append(div_res);
 
         div_res.append(div_wrap);
-        div_wrap.append(res_title);
-        div_wrap.append(res_img);
+        div_wrap.append(div_title_img);
+        div_title_img.append(res_title);
+        div_title_img.append(res_img);
         div_wrap.append(res_text);
 
         let func_title = python_func[0][i];
