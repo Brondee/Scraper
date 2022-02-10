@@ -13,7 +13,10 @@ PATH = "C:\Program Files (x86)\chromedriver.exe"
 @eel.expose
 def scraper(query):
 
-    all_text = ""
+    all_text = []
+    titles = []
+    srcs = []
+    counter = 0
     driver = webdriver.Chrome(PATH)
     driver.get("https://currency.com/search")
     print(driver.title)
@@ -30,8 +33,8 @@ def scraper(query):
     results = container.find_elements(By.CLASS_NAME, "global-search__item")
 
     try:
-        for i in range(1):
-
+        for i in range(3):
+            
             container_el = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.CLASS_NAME, "global-search__list"))
             )
@@ -39,7 +42,7 @@ def scraper(query):
             results_el = container_el.find_elements(By.CLASS_NAME, "global-search__item")
 
             img = results_el[i].find_element(By.TAG_NAME, "img")
-            src = img.get_attribute("src")
+            srcs.append(img.get_attribute("src")) 
 
             a = results_el[i].find_element(By.TAG_NAME, "a")
             a.click()
@@ -48,19 +51,22 @@ def scraper(query):
             section = WebDriverWait(driver, 5).until(
                 EC.presence_of_element_located((By.CLASS_NAME, "inner-content-article"))
             )
-            all_text += section.text
-            title = driver.title
+            all_text.append(section.text)
+            titles.append(driver.title) 
+
+            counter += 1
             driver.back()
             driver.refresh()
 
-            return all_text, title, src
+        return titles, srcs, all_text, counter
 
     finally:
-        open('info.txt', 'w').close()
-        file = open("info.txt", "a") #opens a file in the same folder with python script
-        file.write(all_text) #writes all text to a file in the same folder with python script
+        #open('info.txt', 'w').close()
+        #file = open("info.txt", "a") #opens a file in the same folder with python script
+        #file.write(all_text) #writes all text to a file in the same folder with python script
         print(all_text)
-        print(src)
-        driver.close()
+        print(srcs)
+        print(counter)
+        print("----------------------------------------------------")
 
 eel.start("index.html", size = (1500, 900))

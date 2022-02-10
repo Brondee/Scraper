@@ -136,8 +136,8 @@ a{
     display: none;
 }
 .article_img{
-    width: 250px;
-    height: 150px;
+    width: 80%;
+    height: 500px;
     border: none;
     border-radius: 15px;
     display: block;
