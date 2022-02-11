@@ -9,21 +9,44 @@
     <link rel="icon" type="image/png" href="icons/logo.ico"
 </head>
 <body>
-    <div class ="menu">
-        <a class = "logo_block" href = "#main_sect">
-            <img src = "icons/logo.png" class="logo_img" alt="">
-            <p class = "logo_txt"><span class="blue">Web</span> Scraper</p>
-        </a>
-    </div>
     <section class="main" id = "main_sect">
+        <div class ="menu">
+            <a class = "logo_block" href = "#main_sect">
+                <img src = "icons/logo.png" class="logo_img" alt="">
+                <p class = "logo_txt"><span class="blue">Web</span> Scraper</p>
+            </a>
+        </div>
         <div class = "wrap">
+            <div class = "img_holder">
+                <img src = "img/main_img.png" class = "main_img" alt="main image">
+            </div>
             <div class="search_container">
                 <input placeholder = "Search..." id = "search">
+                <input value = "1" maxlength = "2" id = "amount">
+            </div>
+            <div class = "choice_container">
+                <div class = "choice" id = "choice1">
+                    <p class = "choice_txt">Ethereum</p>
+                </div>
+                <div class = "choice" id = "choice2">
+                    <p class = "choice_txt">Bitcoin</p>
+                </div>
+                <div class = "choice" id = "choice3">
+                    <p class = "choice_txt">Litecoin</p>
+                </div>
+                <div class = "choice" id = "choice4">
+                    <p class = "choice_txt">Dogecoin</p>
+                </div>
+            </div>
+            <div class="button_container">
                 <button id = "submit">Submit</button>
             </div>
+        </div>
+    </section>
+    <section class="results_section">
+        <div class="wrap">
             <h2 class="results_title">Your results:</h2>
             <div class="results">
-            </div>
         </div>
     </section>
 </body>

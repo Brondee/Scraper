@@ -11,7 +11,7 @@ eel.init("web")
 PATH = "C:\Program Files (x86)\chromedriver.exe"
 
 @eel.expose
-def scraper(query):
+def scraper(query, amount):
 
     all_text = []
     titles = []
@@ -33,7 +33,7 @@ def scraper(query):
     results = container.find_elements(By.CLASS_NAME, "global-search__item")
 
     try:
-        for i in range(3):
+        for i in range(int(amount)):
             
             container_el = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.CLASS_NAME, "global-search__list"))

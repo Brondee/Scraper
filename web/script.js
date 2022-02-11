@@ -5,8 +5,9 @@
 async function get_text(){
 
     query_value = document.getElementById("search").value;
+    amount_value = document.getElementById("amount").value;
 
-    let python_func = await eel.scraper(query_value)();
+    let python_func = await eel.scraper(query_value, amount_value)();
 
     let counter = python_func[3]
 
@@ -50,6 +51,16 @@ async function get_text(){
     }
 }
 
+$(".choice").click(function(){
+    $(this).addClass("choice_active").siblings().removeClass("choice_active");
+    let choice_value = $(this).find(".choice_txt").text();
+    $("#search").val(choice_value);
+})
+
 $("#submit").click(function(){
     get_text();
+})
+
+$("#search").click(function(){
+    $(".choice").removeClass("choice_active");
 })
