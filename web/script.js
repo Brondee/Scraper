@@ -60,6 +60,8 @@ async function get_text(){
             group_counter++;
         }
 
+        div_group = document.getElementsByClassName("group_container")[group_counter];
+
         div_group.append(div_res);
         div_res.append(div_wrap);
         div_wrap.append(div_title_img);
