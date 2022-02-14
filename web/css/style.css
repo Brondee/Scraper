@@ -236,6 +236,9 @@ a{
     transform: rotate(180deg);
     transition: 0.3s;
 }
+.result_hidden{
+    display: none;
+}
 .result{
     width: 100%;
     display: flex;

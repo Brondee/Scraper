@@ -11,6 +11,12 @@ async function get_text(){
     let counter = python_func[3]
     let group_counter = 0;
 
+    function open(){
+        $(this).toggleClass("group_title_container_active");
+        $(this).find(".arrow_down").toggleClass("arrow_up");
+        $(this).parent().find(".result_hidden").toggleClass("result");
+    }
+
     for(let i = 0; i < counter; i++){
 
         let div_group = document.createElement("div");
@@ -27,7 +33,7 @@ async function get_text(){
         img_arrow_down.src = "icons/arrow-down.png";
 
         let div_res = document.createElement('div');
-        div_res.className = 'result';
+        div_res.className = 'result_hidden';
 
         let div_wrap =  document.createElement('div');
         div_wrap.className = "result_wrap";
@@ -79,6 +85,10 @@ async function get_text(){
         res_img.className = "article_img";
         res_text.innerText = func_text;
         p_group_title.innerText = query_return;
+
+        group_clicker = document.getElementsByClassName("group_title_container")[group_counter];
+        group_clicker.addEventListener('click', open)
+            
     }
 }
 
@@ -96,7 +106,3 @@ $("#search").click(function(){
     $(".choice").removeClass("choice_active");
 })
 
-$(".group_title_container").click(function(){
-    $(this).toggleClass("group_title_container_active");
-    $(this).find(".arrow_down").toggleClass("arrow_up");
-})
