@@ -5,13 +5,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import eel
+from coindesk_scraper import coindesk
+from daily_hold_scraper import dailyHold
 
-eel.init("web")
+#eel.init("web")
 
 PATH = "C:\Program Files (x86)\chromedriver.exe"
 
-@eel.expose
-def scraper(query, amount):
+#@eel.expose
+def cryptocurrency(query, amount):
 
     all_text = []
     titles = []
@@ -29,11 +31,7 @@ def scraper(query, amount):
         search.send_keys(Keys.RETURN)
 
 
-        container = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.CLASS_NAME, "global-search__list"))
-        )
 
-        results = container.find_elements(By.CLASS_NAME, "global-search__item")
 
         try:
             for i in range(int(amount)):
@@ -71,11 +69,23 @@ def scraper(query, amount):
             #open('info.txt', 'w').close()
             #file = open("info.txt", "a") #opens a file in the same folder with python script
             #file.write(all_text) #writes all text to a file in the same folder with python script
-            print(all_text)
-            print(srcs)
-            print(counter)
+            #print(all_text)
+            #print(srcs)
+            #print(counter)
             print("----------------------------------------------------")
+    
+    #daily_hold_info = dailyHold(query, amount)
 
+    #print(daily_hold_info)
+
+    #for t in range(daily_hold_info[3]):
+
+        #titles.append(daily_hold_info[0][t])
+        #srcs.append(daily_hold_info[1][t])
+        #all_text.append(daily_hold_info[2][t])
+        #counter += daily_hold_info[3]
+
+    #print(titles)
     return titles, srcs, all_text, counter, queries
 
-eel.start("index.html", size = (1500, 900))
+#eel.start("index.html", size = (1500, 900))

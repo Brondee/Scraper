@@ -3,14 +3,28 @@
 
 async function get_text(){
 
+    var resources_check = [];
+
+    let first_resource = document.getElementsByClassName("resource")[0];
+    let second_resource = document.getElementsByClassName("resource")[1];
+
+    if (first_resource.classList.contains("resource_active")){
+        resources_check.push("1");
+    }
+    if (second_resource.classList.contains("resource_active")){
+        resources_check.push("2");
+    }
+    
+    console.log(resources_check);
+
     query_value = document.getElementById("search").value;
     amount_value = document.getElementById("amount").value;
 
-    let python_func = await eel.scraper(query_value, amount_value)();
+    let python_func = await eel.config(query_value, amount_value, resources_check)();
 
     let counter = python_func[3]
     let group_counter = 0;
-
+    
     function open(){
         $(this).toggleClass("group_title_container_active");
         $(this).find(".arrow_down").toggleClass("arrow_up");
@@ -58,7 +72,7 @@ async function get_text(){
             div_group_title.append(p_group_title);
             div_group_title.append(img_arrow_down);
         }
-        else if(i % amount_value == 0){
+        else if(i % (amount_value * 2) == 0){
             main_div.append(div_group);
             div_group.append(div_group_title);
             div_group_title.append(p_group_title);
@@ -106,3 +120,6 @@ $("#search").click(function(){
     $(".choice").removeClass("choice_active");
 })
 
+$(".resource").click(function(){
+    $(this).toggleClass("resource_active");
+})

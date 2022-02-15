@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 body{
-    margin: 0
+    margin: 0;
 }
 a{
     text-decoration: none;
@@ -41,7 +41,7 @@ a{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url("../img/bg.png");
+    background-image: url("../img/bg3.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: top;
@@ -107,6 +107,41 @@ a{
 }
 #amount:focus{
     outline: none;
+}
+.resources_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.resource{
+    width: 200px;
+    height: 120px;
+    background: #FFFFFF;
+    border: 7px solid #DB666E;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 60px;
+    margin-left: 60px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.resource:hover{
+    transition: 0.2s;
+    background: #FFD1D1;
+}
+.resource_active{
+    background: #FFD1D1;
+    transition: 0.2s;
+}
+.resource_img{
+    width: 60px;
 }
 .choice_container{
     width: 100%;
