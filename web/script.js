@@ -123,3 +123,22 @@ $("#search").click(function(){
 $(".resource").click(function(){
     $(this).toggleClass("resource_active");
 })
+
+$(window).scroll(function(){
+    if ($(this).scrollTop() > 900){
+        console.log("yes");
+        $(".scroll_top")[0].style.display = "flex";
+    } else{
+        $(".scroll_top")[0].style.display = "none";
+    }
+})
+
+$(".scroll_top").click(function(){
+    $("html, body").animate({
+        scrollTop: $($(this).attr("href")).offset().top + "px"
+    }, {
+        duration: 400,
+        easing: "swing"
+    });
+    return false;
+});

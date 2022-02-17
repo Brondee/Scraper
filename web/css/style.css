@@ -207,6 +207,23 @@ a{
     transition: 0.2s;
     background-color: #274174;
 }
+
+.scroll_top{
+    width: 90px;
+    height: 90px;
+    background: #95B4F1;
+    border-radius: 13px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: fixed;
+    bottom: 40px;
+    right: 60px;
+}
+.scroll_top_img{
+    width: 50px;
+}
 .results_section{
     width: 100%;
     display: flex;

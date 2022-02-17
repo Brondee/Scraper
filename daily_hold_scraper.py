@@ -25,9 +25,6 @@ def dailyHold(query, amount):
         search.send_keys(queries[x])
         search.send_keys(Keys.RETURN)
 
-
-        
-
         try:
             for i in range(int(amount)):
             
@@ -69,14 +66,6 @@ def dailyHold(query, amount):
                 driver.refresh()
 
         finally:
-            #open('info.txt', 'w').close()
-            #file = open("info.txt", "a") #opens a file in the same folder with python script
-            #file.write(all_text) #writes all text to a file in the same folder with python script
-            #print(coin_all_text)
-            #print(coin_srcs)
-            #print(counter)
             print("----------------------------------------------------")
 
     return coin_titles, coin_srcs, coin_all_text, counter, queries
-
-#print(dailyHold("bitcoin litecoin", "2"))

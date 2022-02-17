@@ -3,16 +3,12 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import time
 import eel
 from coindesk_scraper import coindesk
 from daily_hold_scraper import dailyHold
 
-#eel.init("web")
-
 PATH = "C:\Program Files (x86)\chromedriver.exe"
 
-#@eel.expose
 def cryptocurrency(query, amount):
 
     all_text = []
@@ -29,9 +25,6 @@ def cryptocurrency(query, amount):
         search = driver.find_element(By.XPATH, "/html/body/div[1]/form[1]/div/label/input")
         search.send_keys(queries[x])
         search.send_keys(Keys.RETURN)
-
-
-
 
         try:
             for i in range(int(amount)):
@@ -65,27 +58,12 @@ def cryptocurrency(query, amount):
                 driver.back()
                 driver.refresh()
 
+        #ElementClickInterceptedException
+        #WebDriverException: chrome not reachable
         finally:
             #open('info.txt', 'w').close()
             #file = open("info.txt", "a") #opens a file in the same folder with python script
             #file.write(all_text) #writes all text to a file in the same folder with python script
-            #print(all_text)
-            #print(srcs)
-            #print(counter)
             print("----------------------------------------------------")
     
-    #daily_hold_info = dailyHold(query, amount)
-
-    #print(daily_hold_info)
-
-    #for t in range(daily_hold_info[3]):
-
-        #titles.append(daily_hold_info[0][t])
-        #srcs.append(daily_hold_info[1][t])
-        #all_text.append(daily_hold_info[2][t])
-        #counter += daily_hold_info[3]
-
-    #print(titles)
     return titles, srcs, all_text, counter, queries
-
-#eel.start("index.html", size = (1500, 900))
