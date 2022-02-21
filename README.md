@@ -1,3 +1,7 @@
+![stars](https://img.shields.io/github/stars/Brondee/Scraper?color=blue&style=flat-square)
+![downloads](https://img.shields.io/github/downloads/Brondee/Scraper/total?color=pink&style=flat-square)
+![top_lang](https://img.shields.io/github/languages/top/Brondee/Scraper?style=flat-square)
+![activity](https://img.shields.io/github/commit-activity/y/Brondee/Scraper?color=red&style=flat-square)
 
 <h1 align = "center">Python Selenium Scraper with Web interface</h1>
 
