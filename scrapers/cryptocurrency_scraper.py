@@ -9,6 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+#add your own path to chromedriver.exe
 PATH = "C:\Program Files (x86)\chromedriver.exe"
 
 def cryptocurrency(query, amount):
@@ -25,8 +26,10 @@ def cryptocurrency(query, amount):
     #for each query in queries
     for x in range(len(queries)):
 
-        #searchs for query
+        #opens website's url
         driver.get("https://currency.com/search")
+
+        #searchs for query
         search = driver.find_element(By.XPATH, "/html/body/div[1]/form[1]/div/label/input")
         search.send_keys(queries[x])
         search.send_keys(Keys.RETURN)
