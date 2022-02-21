@@ -5,34 +5,39 @@ async function get_text(){
 
     var resources_check = [];
 
+    //getting all resources buttons
     let first_resource = document.getElementsByClassName("resource")[0];
     let second_resource = document.getElementsByClassName("resource")[1];
 
+    //checking if each resource has been chosen
     if (first_resource.classList.contains("resource_active")){
         resources_check.push("1");
     }
     if (second_resource.classList.contains("resource_active")){
         resources_check.push("2");
     }
-    
-    console.log(resources_check);
 
+    //getting query value and the amount of articles to return
     query_value = document.getElementById("search").value;
     amount_value = document.getElementById("amount").value;
 
+    //calling python function
     let python_func = await eel.config(query_value, amount_value, resources_check)();
 
     let counter = python_func[3]
     let group_counter = 0;
     
+    //group open/close function
     function open(){
         $(this).toggleClass("group_title_container_active");
         $(this).find(".arrow_down").toggleClass("arrow_up");
         $(this).parent().find(".result_hidden").toggleClass("result");
     }
 
+    //for each article 
     for(let i = 0; i < counter; i++){
 
+        //creating all necessary elements to show article's info
         let div_group = document.createElement("div");
         div_group.className = "group_container";
 
@@ -66,13 +71,14 @@ async function get_text(){
 
         let main_div = document.getElementsByClassName("results")[0];
 
+        //grouping articles by query function
         if(i == 0) {
             main_div.append(div_group);
             div_group.append(div_group_title);
             div_group_title.append(p_group_title);
             div_group_title.append(img_arrow_down);
         }
-        else if(i % (amount_value * 2) == 0){
+        else if(i % (amount_value * resources_check.length) == 0){
             main_div.append(div_group);
             div_group.append(div_group_title);
             div_group_title.append(p_group_title);
@@ -81,7 +87,8 @@ async function get_text(){
         }
 
         div_group = document.getElementsByClassName("group_container")[group_counter];
-
+        
+        //appending all elements
         div_group.append(div_res);
         div_res.append(div_wrap);
         div_wrap.append(div_title_img);
@@ -89,20 +96,22 @@ async function get_text(){
         div_title_img.append(res_img);
         div_wrap.append(res_text);
 
+        //appending all article's info to variables
         let func_title = python_func[0][i];
         let func_img = python_func[1][i];
         let func_text = python_func[2][i];
         let query_return = python_func[4][group_counter];
 
+        //appending all article's info to elements in webpage
         res_title.innerText = func_title;
         res_img.src = func_img;
         res_img.className = "article_img";
         res_text.innerText = func_text;
         p_group_title.innerText = query_return;
 
+        //adding click event to group div
         group_clicker = document.getElementsByClassName("group_title_container")[group_counter];
         group_clicker.addEventListener('click', open)
-            
     }
 }
 

@@ -8,7 +8,6 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import eel
 
 PATH = "C:\Program Files (x86)\chromedriver.exe"
 
@@ -28,7 +27,6 @@ def cryptocurrency(query, amount):
 
         #searchs for query
         driver.get("https://currency.com/search")
-        print(driver.title)
         search = driver.find_element(By.XPATH, "/html/body/div[1]/form[1]/div/label/input")
         search.send_keys(queries[x])
         search.send_keys(Keys.RETURN)
@@ -78,7 +76,7 @@ def cryptocurrency(query, amount):
             print("something went wrong(")
             
         finally:
-            print("----------------------------------------------------")
+            print(counter)
     
     #returns all information
     return titles, srcs, all_text, counter, queries

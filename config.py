@@ -1,6 +1,15 @@
 import eel
-from daily_hodl_scraper import dailyHodl
-from cryptocurrency_scraper import cryptocurrency
+import sys
+
+sys.path.append("D:/phyton_scraper/scrapers")
+
+#importing all scrapers
+from scrapers import daily_hodl_scraper
+from scrapers import cryptocurrency_scraper
+
+#asserting functions to variables
+dailyHodl = daily_hodl_scraper.dailyHodl
+cryptocurrency = cryptocurrency_scraper.cryptocurrency
 
 eel.init("web")
 
@@ -19,17 +28,17 @@ def config(query, amount, resources):
     srcs = []
     queries = query.split()
 
-    #summarises amount of found articles form each function
+    #summarises amount of found articles form each resource
     if "1" in resources and "2" in resources:
         total_counter = daily_hold_info[3] + cryptocurrency_info[3]
         counter = daily_hold_info[3]
     
-    #assigns amount of found articles form first function only
+    #assigns amount of found articles form first resource only
     elif "1" in resources:
         total_counter = cryptocurrency_info[3]
         counter = cryptocurrency_info[3]
     
-    #assigns amount of found articles form second function only
+    #assigns amount of found articles form second resource only
     elif "2" in resources:
         total_counter = daily_hold_info[3]
         counter = daily_hold_info[3]

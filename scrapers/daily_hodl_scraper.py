@@ -8,14 +8,12 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import time
-import eel
 
 PATH = "C:\Program Files (x86)\chromedriver.exe"
 
 def dailyHodl(query, amount):
 
-#adding all necessary variables
+    #adding all necessary variables
     all_text = []
     titles = []
     srcs = []
@@ -23,12 +21,11 @@ def dailyHodl(query, amount):
     counter = 0
     driver = webdriver.Chrome(PATH)
 
-#for each query in queries
+    #for each query in queries
     for x in range(len(queries)):
 
         #searchs for query
         driver.get("https://dailyhodl.com/?s=")
-        print(driver.title)
         search = driver.find_element(By.XPATH, "/html/body/div[2]/div[4]/div/div[1]/div/div/div[2]/div[1]/div/div[1]/div/form/input")
         search.send_keys(queries[x])
         search.send_keys(Keys.RETURN)
@@ -89,6 +86,7 @@ def dailyHodl(query, amount):
             print("something went wrong(")
 
         finally:
-            print("----------------------------------------------------")
+            print(counter)
 
+    #returns all information
     return titles, srcs, all_text, counter, queries
