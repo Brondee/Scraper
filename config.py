@@ -1,7 +1,7 @@
 import eel
 import sys
 
-sys.path.append("D:/phyton_scraper/scrapers")
+sys.path.append("/phyton_scraper/scrapers")
 
 #importing all scrapers
 from scrapers import daily_hodl_scraper

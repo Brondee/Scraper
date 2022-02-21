@@ -10,7 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 #add your own path to chromedriver.exe
-PATH = "C:\Program Files (x86)\chromedriver.exe"
+PATH = "your/path/chromedriver.exe"
 
 def cryptocurrency(query, amount):
 
